@@ -28,7 +28,7 @@ function Show404() {
 export default function Admin() {
   useNoIndex()
   // loading | signed-out | denied | admin
-  const [state, setState] = useState(firebaseConfigured ? 'loading' : 'denied')
+  const [state, setState] = useState(firebaseConfigured ? 'loading' : 'signed-out')
   const [user, setUser] = useState(null)
   const [error, setError] = useState('')
 
@@ -57,6 +57,10 @@ export default function Admin() {
 
   async function signIn() {
     setError('')
+    if (!firebaseConfigured) {
+      setError('Sign-in isn’t available right now. Please try again later.')
+      return
+    }
     try {
       const { auth: a, au } = await auth()
       const provider = new au.GoogleAuthProvider()

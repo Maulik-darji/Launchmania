@@ -18,11 +18,8 @@ see it. Everyone else gets a 404.
 
 ## 2. Add the config
 
-```bash
-cp .env.example .env
-```
-
-Fill in the six `VITE_FIREBASE_*` values from step 1.4 and restart `npm run dev`.
+Paste the web app config into `src/lib/firebase.js`. It's public by design (it
+ships in the site's JavaScript), so no environment variables are needed.
 
 ## 3. Deploy the security rules
 
@@ -42,8 +39,7 @@ firebase deploy --only hosting
 ```
 
 `firebase.json` already rewrites every path to `index.html`, so `/admin` and
-the 404 page work. On Vercel or Netlify, add the same `VITE_FIREBASE_*`
-environment variables and an SPA rewrite to `/index.html`.
+the 404 page work. On Vercel, `vercel.json` does the same.
 
 ## Changing the admin email
 

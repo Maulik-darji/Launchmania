@@ -5,13 +5,15 @@
 // actually protect the data; this constant only decides what the UI shows.
 export const ADMIN_EMAIL = 'maulik.darji2005@gmail.com'
 
+// Firebase web config is public by design (it ships in the bundle either way);
+// firestore.rules is what protects the data, so it lives here, not in env vars.
 const config = {
-  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
-  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
-  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
-  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
-  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
-  appId: import.meta.env.VITE_FIREBASE_APP_ID,
+  apiKey: 'AIzaSyBCGI4rUUOVT2ZKECoUr4C1ZWL-PYV0xLQ',
+  authDomain: 'launchmania.firebaseapp.com',
+  projectId: 'launchmania',
+  storageBucket: 'launchmania.firebasestorage.app',
+  messagingSenderId: '131832975024',
+  appId: '1:131832975024:web:1d489db4327c7592a03575',
 }
 
 export const firebaseConfigured = Boolean(config.apiKey && config.projectId && config.appId)

@@ -49,6 +49,9 @@ export async function joinWaitlist(fields) {
   if (firebaseConfigured) {
     const { db: store, fs } = await db()
     await fs.addDoc(fs.collection(store, 'waitlist'), { ...entry, createdAt: fs.serverTimestamp() })
+  } else if (import.meta.env.PROD) {
+    // Never tell a visitor "you're in" when nothing was stored.
+    throw new Error('Firebase is not configured for this build.')
   } else {
     console.warn('[waitlist] Firebase is not configured. Sign-up only saved in this browser.', entry)
   }
